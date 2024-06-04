@@ -5,16 +5,16 @@
    as if it was over the surface of a sphere. It copies the function of the spherical transform
    in latlong from-to mode but processing the image much faster as it is more simple.
 
-   \author Jorge Jacob
+   \author Jorge Jacob García-Asenjo
    \date June 4th, 2024 File creation.
  */
 
 // Standard plug-in include files.
 
-static const char* const CLASS = "simpleSphericalTransform"; // Name of the class (should be the same as the name of the final .dll file)
+static const char* const CLASS = "simpleSphericalTransform";
 static const char* const HELP = "Transforms the input image as if\n"
                                 "it was the surface of a sphere,\n"
-                                "you can change the position of the poles."; // The tooltip you see when hovering above the Help-button in Nuke
+                                "you can change the position of the poles.";
 
 #include <stdio.h>
 #include "DDImage/Iop.h"
@@ -77,7 +77,6 @@ public:
 
   void knobs ( Knob_Callback f ) override
   {
-    //MultiInt_knob(f, center, 2, "center");
     XY_knob(f, &center[0], "center");
     Tooltip(f, "Set the pole of the pole of the sphere in the projection.");
     filter.knobs(f);
@@ -148,7 +147,6 @@ template<class TileType> void simpleSphericalTransform::doEngine ( int y, int x,
 
                samplePositions.emplace_back(newPos, du, dv, X);
   }
-  // Create a sampler for the entire requested region since we will be using on demand loading
   Sampler sampler(&input0(), input0().requestedBox(), channels, &filter, Sampler::eEdgeFromIop, &interestRatchet, true);
 
   for (auto& samplePosition : samplePositions) {
