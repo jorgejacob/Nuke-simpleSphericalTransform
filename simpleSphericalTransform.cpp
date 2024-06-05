@@ -78,7 +78,7 @@ public:
   void knobs ( Knob_Callback f ) override
   {
     XY_knob(f, &center[0], "center");
-    Tooltip(f, "Set the pole of the pole of the sphere in the projection.");
+    Tooltip(f, "Set the center of the pole of the sphere in the projection.");
     filter.knobs(f);
     Tooltip(f, "Set the filter type for the spherical transformation.");
   }
