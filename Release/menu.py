@@ -1,0 +1,1 @@
+nuke.menu('Nodes').addCommand('Other/simpleSphericalTransform','nuke.createNode("simpleSphericalTransform")')
